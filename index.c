@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kriad <kriad@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 00:23:43 by kriad             #+#    #+#             */
-/*   Updated: 2026/01/29 21:55:27 by kriad            ###   ########.fr       */
+/*   Updated: 2026/01/30 16:51:03 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,16 @@ void	assign_index(t_stack *a)
 		i++;
 		n = get_min_unindexed(a);
 	}	
+}
+
+int	get_chunk_size(int n)
+{
+	if (n <= 5)
+		return (n);
+	else if (n <= 20)
+		return (n / 2);
+	else if (n <= 100)
+		return (20);
+	else
+		return (35);
 }

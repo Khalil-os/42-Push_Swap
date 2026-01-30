@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kriad <kriad@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 17:37:46 by kriad             #+#    #+#             */
-/*   Updated: 2026/01/29 21:54:21 by kriad            ###   ########.fr       */
+/*   Updated: 2026/01/30 16:32:43 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,6 @@ void	sort_small(t_stack *a, t_stack *b);
 
 /* chunk sort */
 void	chunk_sort(t_stack *a, t_stack *b);
+int		get_chunk_size(int n);
 
 #endif

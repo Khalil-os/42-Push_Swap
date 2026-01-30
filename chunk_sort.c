@@ -3,58 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   chunk_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kriad <kriad@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 01:45:24 by kriad             #+#    #+#             */
-/*   Updated: 2026/01/29 22:02:27 by kriad            ###   ########.fr       */
+/*   Updated: 2026/01/30 16:59:17 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	get_chunk_size(int n)
+static void	move_node_to_top(t_stack *a, t_node *n)
 {
-	if (n <= 5)
-		return (n);
-	else if (n <= 20)
-		return (n / 2);
-	else if (n <= 100)
-		return (20);
-	else
-		return (35);
-}
-
-static int	push_one_from_chunk(t_stack *a, t_stack *b,
-									int chunk_start, int chunk_end)
-{
-	t_node	*n;
-	int		idx;
-	int		mid;
-
-	update_positions(a);
-	n = a->top;
-	mid = chunk_start + (chunk_end - chunk_start) / 2;
-	while (n)
+	while (n->pos != 0)
 	{
-		if (n->index >= chunk_start && n->index <= chunk_end)
-		{
-			while (n->pos != 0)
-			{
-				if (n->pos <= a->size / 2)
-					ra(a);
-				else
-					rra(a);
-				update_positions(a);
-			}
-			idx = n->index;
-			pb(a, b);
-			if (idx < mid)
-				rb(b);
-			return (1);
-		}
-		n = n->next;
+		if (n->pos <= a->size / 2)
+			ra(a);
+		else
+			rra(a);
+		update_positions(a);
 	}
-	return (0);
+}
+		
+static int      push_one_from_chunk(t_stack *a, t_stack *b,
+                                        int chunk_start, int chunk_end)
+{
+    t_node	*n;
+    int		idx;
+    int		mid;
+
+    update_positions(a);
+    n = a->top;
+    mid = chunk_start + (chunk_end - chunk_start) / 2;
+    while (n)
+    {
+        if (n->index >= chunk_start && n->index <= chunk_end)
+        {
+            move_node_to_top(a , n);
+            idx = n->index;
+            pb(a, b);
+            if (idx < mid)
+                    rb(b);
+            return (1);
+        }
+        n = n->next;
+    }
+    return (0);
 }
 
 static void	push_chunks(t_stack *a, t_stack *b, int chunk)
