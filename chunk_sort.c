@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chunk_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: kriad <kriad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 01:45:24 by kriad             #+#    #+#             */
-/*   Updated: 2026/01/30 16:59:17 by kali             ###   ########.fr       */
+/*   Updated: 2026/02/01 21:24:19 by kriad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,31 +23,31 @@ static void	move_node_to_top(t_stack *a, t_node *n)
 		update_positions(a);
 	}
 }
-		
-static int      push_one_from_chunk(t_stack *a, t_stack *b,
-                                        int chunk_start, int chunk_end)
-{
-    t_node	*n;
-    int		idx;
-    int		mid;
 
-    update_positions(a);
-    n = a->top;
-    mid = chunk_start + (chunk_end - chunk_start) / 2;
-    while (n)
-    {
-        if (n->index >= chunk_start && n->index <= chunk_end)
-        {
-            move_node_to_top(a , n);
-            idx = n->index;
-            pb(a, b);
-            if (idx < mid)
-                    rb(b);
-            return (1);
-        }
-        n = n->next;
-    }
-    return (0);
+static int	push_one_from_chunk(t_stack *a, t_stack *b,
+				int chunk_start, int chunk_end)
+{
+	t_node	*n;
+	int		idx;
+	int		mid;
+
+	update_positions(a);
+	n = a->top;
+	mid = chunk_start + (chunk_end - chunk_start) / 2;
+	while (n)
+	{
+		if (n->index >= chunk_start && n->index <= chunk_end)
+		{
+			move_node_to_top(a, n);
+			idx = n->index;
+			pb(a, b);
+			if (idx < mid)
+				rb(b);
+			return (1);
+		}
+		n = n->next;
+	}
+	return (0);
 }
 
 static void	push_chunks(t_stack *a, t_stack *b, int chunk)
