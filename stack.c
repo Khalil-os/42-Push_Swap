@@ -6,7 +6,7 @@
 /*   By: kriad <kriad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 18:08:00 by kriad             #+#    #+#             */
-/*   Updated: 2026/01/28 00:05:23 by kriad            ###   ########.fr       */
+/*   Updated: 2026/02/02 18:36:26 by kriad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,33 +26,25 @@ t_node	*new_node(int value)
 	return (node);
 }
 
-void	add_bottom(t_stack *s, t_node *node)
+int	add_bottom(t_stack *s, t_node *node)
 {
 	t_node	*last;
 
 	if (!s || !node)
-		return ;
+        return (0);
 	node->next = NULL;
 	if (s->top == NULL)
 	{
 		s->top = node;
 		s->size++;
-		return ;
+		return (1);
 	}
 	last = s->top;
 	while (last->next != NULL)
 		last = last->next;
 	last->next = node;
 	s->size++;
-}
-
-void	add_top(t_stack *s, t_node *node)
-{
-	if (!s || !node)
-		return ;
-	node->next = s->top;
-	s->top = node;
-	s->size++;
+    return (1);
 }
 
 void	clear_stack(t_stack *s)
