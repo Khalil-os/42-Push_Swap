@@ -6,7 +6,7 @@
 /*   By: kriad <kriad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 17:37:46 by kriad             #+#    #+#             */
-/*   Updated: 2026/02/02 18:30:58 by kriad            ###   ########.fr       */
+/*   Updated: 2026/02/02 18:51:40 by kriad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		is_sorted(t_stack *a);
 
 /* stack */
 t_node	*new_node(int value);
-int 	add_bottom(t_stack *s, t_node *node);
+int		add_bottom(t_stack *s, t_node *node);
 void	clear_stack(t_stack *s);
 t_node	*last_node(t_node *n);
 

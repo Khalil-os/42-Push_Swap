@@ -6,7 +6,7 @@
 /*   By: kriad <kriad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 18:04:39 by kriad             #+#    #+#             */
-/*   Updated: 2026/02/02 18:32:00 by kriad            ###   ########.fr       */
+/*   Updated: 2026/02/02 18:50:52 by kriad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	parse_one_arg(char *arg, t_stack *a)
 		n = ft_atoi(s[j]);
 		if (n > 2147483647)
 			(free_split(s), error_exit(a, NULL));
-		if(!add_bottom(a, new_node((int)n)))
+		if (!add_bottom(a, new_node((int)n)))
 			(free_split(s), error_exit(a, NULL));
 		j++;
 	}
